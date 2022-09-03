@@ -1,5 +1,16 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/cloudflare'
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import type { ReactNode } from 'react'
+import { json } from '@remix-run/cloudflare'
+import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/cloudflare'
+import {
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+} from '@remix-run/react'
+
 import styles from './tailwind.css'
 
 export const meta: MetaFunction = () => ({
@@ -15,7 +26,17 @@ export const links: LinksFunction = () => [
   },
 ]
 
-export default function App() {
+export const loader: LoaderFunction = async () => {
+  return json({
+    env: {
+      NODE_ENV: process.env.NODE_ENV,
+      MY_ENV,
+    },
+  })
+}
+
+const Document = ({ children }: { children: ReactNode }) => {
+  const { env } = useLoaderData()
   return (
     <html lang="en">
       <head>
@@ -23,11 +44,20 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
+        {children}
+        <script dangerouslySetInnerHTML={{ __html: `window.env = ${JSON.stringify(env)}` }} />
       </body>
     </html>
-  );
+  )
+}
+
+export default function App() {
+  return (
+    <Document>
+      <Outlet />
+      <ScrollRestoration />
+      <Scripts />
+      <LiveReload />
+    </Document>
+  )
 }
