@@ -51,6 +51,17 @@ const Document = ({ children }: { children: ReactNode }) => {
   )
 }
 
+export function ErrorBoundary({ error }: { error: Error }) {
+  console.error(error)
+
+  return (
+    <Document>
+      {error}
+      <Scripts />
+    </Document>
+  )
+}
+
 export default function App() {
   return (
     <Document>
