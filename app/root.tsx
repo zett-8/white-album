@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { json } from '@remix-run/cloudflare'
+import { json, ErrorBoundaryComponent } from '@remix-run/cloudflare'
 import type { LinksFunction, LoaderFunction, MetaFunction } from '@remix-run/cloudflare'
 import {
   Links,
@@ -51,14 +51,19 @@ const Document = ({ children }: { children: ReactNode }) => {
   )
 }
 
-export function ErrorBoundary({ error }: { error: Error }) {
+export const ErrorBoundary: ErrorBoundaryComponent = ({ error }: { error: Error }) => {
   console.error(error)
 
   return (
-    <Document>
-      {error}
-      <Scripts />
-    </Document>
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Scripts />
+      </body>
+    </html>
   )
 }
 
