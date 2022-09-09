@@ -37,6 +37,7 @@ export const loader: LoaderFunction = async () => {
 
 const Document = ({ children }: { children: ReactNode }) => {
   const { env } = useLoaderData()
+
   return (
     <html lang="en">
       <head>
