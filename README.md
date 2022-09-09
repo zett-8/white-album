@@ -139,6 +139,8 @@ In the nested routes, parent components won't be unmounted when you navigate to 
 And another advantage of nested routes is that you can reduce the number of fetch calls.
 Let's say you're accessing /todo/item-1 from /todo, Remix will only fetch data for /todo/item-1, not for /todo again. Because Remix knows your routes structure and it will only fetch data for the current route.
 
+![45f252897454-20211123](https://user-images.githubusercontent.com/33055097/189394342-f0bd9d7c-5530-44ff-bf92-a461e32ff357.gif)
+
 You can access parent loader data in child routes by using `useMatches` hook.
 
 ```tsx
