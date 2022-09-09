@@ -116,6 +116,22 @@ Now you can access the environment variables in the client-side code like this:
 console.log(window.env.MY_ENV_VAR)
 ```
 
+If you are using TypeScript, you should define types to avoid type errors.
+```ts
+export {}
+
+declare global {
+  const MY_ENV_VAR: string
+
+  interface Window {
+    env: {
+      NODE_ENV: string
+      MY_ENV_VAR: string
+    }
+  }
+}
+```
+
 ### Power of nested routes
 Remix has a powerful nested routing system.   
 In the nested routes, parent components won't be unmounted when you navigate to child routes.
