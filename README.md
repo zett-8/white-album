@@ -154,7 +154,7 @@ const Child = () => {
 Check out the [https://remix.run/docs/en/v1/api/remix#usematches](https://remix.run/docs/en/v1/api/remix#usematches) for more details.
 
 
-### Create protected routes
+### Create a parent route validate user and protected all children routes
 You can, but you shouldn't.  
 In Remix, it's recommended to let each route have their own auth check, to make your app as speedy as possible.
 
