@@ -10,9 +10,13 @@ Easy starter for Remix.
 For the detail instruction about Remix, please check the official document.
 - [Remix Docs](https://remix.run/docs)
 
+<br />
+
 ## ⚠️ Note
 The structure and setting files may differ depends on the platform you choose to deploy.
 This repo works with *Cloudflare Workers*, so be aware of the differences when you deploy to other platforms. 
+
+<br />
 
 ## 🚧 Development
 1. Install repo
@@ -53,6 +57,7 @@ yarn start
 
 This command will start your code with Miniflare(cloudflare worker emulator).
 
+<br />
 
 ## 🏁 Deployment
 
@@ -64,9 +69,11 @@ Once that's done, you should be able to deploy your app:
 npm run deploy
 ```
 
+<br />
+
 ## 😉 Tips
 
-### Use environment variables
+### ◆ Use environment variables
 When you want to use environment variables in Remix it's a bit tricky. You can't use `process.env` like you would in a Node.js app.
 
 First, create `.env` file in the root directory and add your environment variables.
@@ -131,8 +138,9 @@ declare global {
   }
 }
 ```
+<br />
 
-### Power of nested routes
+### ◆ Power of nested routes
 Remix has a powerful nested routing system.   
 In the nested routes, parent components won't be unmounted when you navigate to child routes.
 
@@ -153,8 +161,9 @@ const Child = () => {
 
 Check out the [https://remix.run/docs/en/v1/api/remix#usematches](https://remix.run/docs/en/v1/api/remix#usematches) for more details.
 
+<br />
 
-### Create protected routes
+### ◆ Create a parent route validate user and protect all children routes
 You can, but you shouldn't.  
 In Remix, it's recommended to let each route have their own auth check, to make your app as speedy as possible.
 
